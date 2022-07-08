@@ -1,15 +1,16 @@
 package com.example.supportportal.domain;
 
-import java.util.Collection;
-import java.util.stream.Collectors;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class UserPrincipal implements UserDetails {
+import java.util.Collection;
+import java.util.stream.Collectors;
 
-	private User user;
+import static java.util.Arrays.stream;
+
+public class UserPrincipal implements UserDetails {
+    private User user;
 
     public UserPrincipal(User user) {
         this.user = user;
@@ -22,12 +23,12 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public String getPassword() {
-    	return this.user.getPassword();
+        return this.user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return this.user.getUserName();
+        return this.user.getUsername();
     }
 
     @Override
@@ -50,4 +51,3 @@ public class UserPrincipal implements UserDetails {
         return this.user.isActive();
     }
 }
-
